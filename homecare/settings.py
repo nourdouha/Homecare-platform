@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'appointment',
     'user',
     #authentification
-    'django.contrib.sites',
+    #'django.contrib.sites',
     #3rd part APIs
     'rest_framework',
     'rest_framework.authtoken',
@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    
-    
 ]
 
 AUTH_USER_MODEL = 'user.User'
