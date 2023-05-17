@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('', include('dj_rest_auth.urls')),
-    path('registerdoctor/', views.CustomRegisterViewDoctor.as_view(), name='register'),
+    #path('registerdoctor/', views.CustomRegisterViewDoctor.as_view(), name='register'),
     path('account/', include('allauth.urls')),
     path('registration/', views.CustomRegisterView.as_view(), name='register'),
 ]
