@@ -17,6 +17,7 @@ class Doctor (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=255, null=True) #to be in patient's available doctors list
     birthday =  models.DateField(null =True) 
+    picture = models.ImageField(null=True)
 
     #@admin
     MedicalCenter = models.ForeignKey(MedicalCenter,on_delete=models.CASCADE, null=True) # for the driver

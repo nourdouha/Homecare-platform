@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from doctor.models import MedicalCenter, Doctor, nurse
+from patient.models import Patient
+from appointment.models import Appointment
 
 #to make the admin have the field of email in adding users 
 @admin.register(User)
@@ -20,3 +22,5 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(MedicalCenter)
 admin.site.register(Doctor)
 admin.site.register(nurse)
+admin.site.register(Patient)
+admin.site.register(Appointment)

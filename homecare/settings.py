@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'appointment',
     'user',
     'doctor',
+    'patient',
+    'driver',
     #authentification
     #'django.contrib.sites',
     #3rd part APIs
