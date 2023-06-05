@@ -12,3 +12,10 @@ class Patient (models.Model):
     
     def __str__ (self):
         return self.user.full_name
+    
+
+class Medical_file (models.Model):
+    Patient = models.ForeignKey(Patient , null=True, on_delete=models.CASCADE)
+    blood_type = models.CharField(max_length=10 , null=True)
+    disease = models.CharField(max_length=255 , null= True)
+    file = models.FileField()

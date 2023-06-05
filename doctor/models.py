@@ -11,6 +11,7 @@ class MedicalCenter(models.Model):
         return self.medical_center
 
 
+#add api 
 class Doctor (models.Model):
     speciality = models.CharField(max_length=255, null=True) #to show for the patient 
 
@@ -31,11 +32,14 @@ class Doctor (models.Model):
         return self.user.full_name
     
 
+# add api 
 class nurse(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    birthday =  models.DateField(null=True)
     #@admin
     doctor = models.ForeignKey(Doctor , on_delete=models.CASCADE, null=True) #for MedicalCenter , WorkTime, address
-    birthday =  models.DateField(null=True)
+    
     def __str__ (self):
         return self.user.full_name
 

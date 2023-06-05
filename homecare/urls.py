@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from user import views
-from driver import views
+from doctor import views,urls
+import patient
+#from driver import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
     path('', include('dj_rest_auth.urls')),
-    #path('registerdoctor/', views.CustomRegisterViewDoctor.as_view(), name='register'),
     path('account/', include('allauth.urls')),
-    path('registration/', views.CustomRegisterView.as_view(), name='register'),
-
-    path('driver/', views.AppointmentSolutionView.as_view(), name='driver-appointments'),
+    #path('registration/', views.CustomRegisterView.as_view(), name='register'),
+    path('patient/',include('patient.urls')),
+    path('doctor/',include('doctor.urls')),
+    path('appointments/', include('appointment.urls')),
 ]

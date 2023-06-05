@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'user',
     'doctor',
     'patient',
-    'driver',
+    #'driver',
     #authentification
     #'django.contrib.sites',
     #3rd part APIs
@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    #to  remove XMLhttp request error
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -65,9 +67,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     #corsheaders
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'homecare.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {

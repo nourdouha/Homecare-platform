@@ -2,13 +2,14 @@ import numpy as np
 from pyomo.environ import *
 from appointment.models import Todayschedule
 from .models import Driver
+from doctor.models import Doctor
 from .distance import calculate_distance
 
 
 
 # Get today's appointments for each driver
-driver = Driver.objects.get(id)
-today_appointments = Todayschedule.get_appointments(driver.doctor)
+doctor = Doctor.objects.get(id)
+today_appointments = Todayschedule.get_appointments(doctor_id=id)
 
 # Get the coordinates for medical center + patients to calculate distances
 app_lat = [driver.doctor.MedicalCenter.latitude]
@@ -103,3 +104,4 @@ if results.solver.status == SolverStatus.ok and results.solver.termination_condi
 else:
     #we will use today_appointment without change 
     print("Solver did not find an optimal solution")
+
