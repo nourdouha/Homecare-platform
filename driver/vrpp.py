@@ -16,11 +16,7 @@ for Ambulance_count in range(1,max_Ambulance_count):
     model.Ambulances = Set(initialize=range(Ambulance_count))
     
 # create the decision variables  a 3D binary variable     
-    model.x = Var(
-             model.patient, model.patient, model.Ambulances,
-             within=Binary,
-            doc="1 if taken route from i-th to j-th place taken by k-th Ambulance, 0 otherwise"
-             )
+ 
     
 # add objective function
 

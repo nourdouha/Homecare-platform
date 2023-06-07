@@ -1,6 +1,20 @@
 from django.db import models
 from user.models import User
 
+
+
+
+
+class optimizedRoute(models.Model):
+    driver = models.CharField(max_length=255)
+    date = models.DateField()
+    appointment1 = models.CharField(max_length=255)
+    appointment2 = models.CharField(max_length=255)
+    appointment3 = models.CharField(max_length=255)
+    appointment4 = models.CharField(max_length=255)
+    def __str__ (self):
+        return self.driver
+
 #@admin
 class MedicalCenter(models.Model):
     medical_center =models.CharField(max_length=255)
