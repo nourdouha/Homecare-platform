@@ -71,3 +71,25 @@ class CustomRegisterViewNurse(RegisterView):
             return JsonResponse(data, status=201)
         else:
             return JsonResponse(serializer.errors, status=400)
+
+#get doctors list 
+
+def get_doctors(request):
+    doctors = Doctor.objects.all()
+    data = []
+    for doctor in doctors:
+        data.append({
+            'full_name': doctor.user.full_name,
+            'speciality': doctor.speciality,
+            'address': doctor.address,
+            'picture' : doctor.picture
+            # Add other fields you want to include
+        })
+    return JsonResponse(data, safe=False)
+
+from .serializers import DoctorSerializer
+
+def get_doctorss(request):
+    doctors = Doctor.objects.all()
+    serializer = DoctorSerializer(doctors, many=True)
+    return JsonResponse(serializer.data, safe=False)

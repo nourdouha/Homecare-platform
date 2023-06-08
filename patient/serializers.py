@@ -48,6 +48,7 @@ class CustomRegisterSerializerPatient(RegisterSerializer):
     
 
 class MedicalFileSerializer(serializers.ModelSerializer):
+    full_name = serializers.CharField(source='Patient.user.full_name', read_only=True)    
     class Meta:
         model = Medical_file
-        fields = '__all__'
+        fields = ['full_name', 'blood_type', 'disease', 'file']

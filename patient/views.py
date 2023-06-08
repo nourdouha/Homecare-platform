@@ -5,6 +5,10 @@ from rest_framework import viewsets
 from dj_rest_auth.registration.views import RegisterView
 from .serializers import  CustomRegisterSerializerPatient, MedicalFileSerializer
 
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
  #patient view (new user , new patient)
 
 class CustomRegisterViewPatient(RegisterView):
@@ -44,8 +48,13 @@ class CustomRegisterViewPatient(RegisterView):
             return JsonResponse(serializer.errors, status=400)
 
 
-class MedicaleFileViewSet(viewsets.ModelViewSet):
-    queryset = Medical_file.objects.all()
-    serializer_class = MedicalFileSerializer
+class MedicalFileAPIView(APIView):
+    def post(self, request):
+        serializer = MedicalFileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 

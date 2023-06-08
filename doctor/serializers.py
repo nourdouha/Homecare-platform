@@ -67,3 +67,11 @@ class CustomRegisterSerializerNurse(RegisterSerializer):
 
 
         return user
+    
+
+class DoctorSerializer(serializers.ModelSerializer):
+    full_name = serializers.CharField(source='user.full_name', read_only=True)
+
+    class Meta:
+        model = Doctor
+        fields = ['id', 'full_name', 'speciality', 'address', 'picture']
